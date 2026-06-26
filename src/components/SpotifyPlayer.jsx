@@ -8,11 +8,11 @@ export default function SpotifyPlayer() {
     <div style={{
       position: 'fixed',
       bottom: '80px',
-      left: '20px',
+      right: '20px',
       zIndex: 9999,
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'flex-start',
+      alignItems: 'flex-end',
       gap: '10px',
       pointerEvents: 'none' // Biarkan event klik tembus ke belakang jika meleset
     }}>
