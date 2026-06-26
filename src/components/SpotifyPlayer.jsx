@@ -1,8 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function SpotifyPlayer() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const iframeRef = useRef(null);
+
+  const togglePlay = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      const command = isPlaying ? 'pauseVideo' : 'playVideo';
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: command, args: [] }),
+        '*'
+      );
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   return (
     <div style={{
@@ -10,59 +22,45 @@ export default function SpotifyPlayer() {
       bottom: '30px',
       right: '20px',
       zIndex: 9999,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-end',
-      gap: '10px',
-      pointerEvents: 'none' // Biarkan event klik tembus ke belakang jika meleset
+      pointerEvents: 'none'
     }}>
-      <div style={{
-        width: 'calc(100vw - 40px)',
-        maxWidth: '300px',
-        borderRadius: '12px',
-        boxShadow: isOpen ? '0 10px 30px rgba(0,0,0,0.5)' : 'none',
-        pointerEvents: isOpen ? 'auto' : 'none',
-        opacity: isOpen ? 1 : 0,
-        position: isOpen ? 'relative' : 'absolute',
-        transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
-        transition: 'all 0.3s ease-in-out',
-        zIndex: isOpen ? 1 : -1,
-        overflow: 'hidden'
-      }}>
+      {/* Hidden YouTube Iframe for Audio Only */}
+      <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }}>
         <iframe 
-          style={{ border: 0, borderRadius: '12px', display: 'block' }} 
-          src="https://www.youtube.com/embed/7d6rzXVlbjg?autoplay=0&rel=0" 
+          ref={iframeRef}
+          src="https://www.youtube.com/embed/7d6rzXVlbjg?enablejsapi=1&autoplay=0&rel=0&controls=0" 
           title="YouTube Music Player"
-          width="100%" 
-          height="169" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowFullScreen
+          width="10" 
+          height="10" 
+          allow="autoplay"
         ></iframe>
       </div>
 
-      {/* Tombol Toggle (Buka/Tutup) */}
+      {/* Play/Pause Button */}
       <button 
-        onClick={() => setIsOpen(!isOpen)}
-        title={isOpen ? 'Tutup Music Player' : 'Buka Music Player'}
+        onClick={togglePlay}
+        title={isPlaying ? 'Pause Music' : 'Play Music'}
         style={{
           width: '40px',
           height: '40px',
           padding: '0',
-          background: 'rgba(255, 255, 255, 0.05)',
+          background: isPlaying ? 'var(--primary)' : 'rgba(255, 255, 255, 0.05)',
           backdropFilter: 'blur(10px)',
           border: '1px solid rgba(255, 255, 255, 0.1)',
-          color: 'var(--foreground)',
+          color: '#fff',
           borderRadius: '50%',
           cursor: 'pointer',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+          boxShadow: isPlaying ? '0 0 15px var(--primary-glow)' : '0 4px 15px rgba(0,0,0,0.3)',
           transition: 'all 0.3s ease',
-          pointerEvents: 'auto' // Tombol harus bisa diklik
+          pointerEvents: 'auto'
         }}
       >
-        <span style={{ fontSize: '1rem' }}>🎵</span>
+        <span style={{ fontSize: '1rem', transform: isPlaying ? 'scale(1.1)' : 'scale(1)' }}>
+          {isPlaying ? '⏸' : '🎵'}
+        </span>
       </button>
     </div>
   );
