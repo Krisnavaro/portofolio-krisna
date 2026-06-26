@@ -16,25 +16,28 @@ export default function SpotifyPlayer() {
       gap: '10px',
       pointerEvents: 'none' // Biarkan event klik tembus ke belakang jika meleset
     }}>
-      {/* Kotak Spotify Player */}
-      {isOpen && (
-        <div style={{
-          width: '300px',
-          borderRadius: '12px',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
-          pointerEvents: 'auto' // Aktifkan interaksi untuk iframe
-        }}>
-          <iframe 
-            style={{ border: 0, borderRadius: '12px' }} 
-            src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator&theme=0" 
-            width="100%" 
-            height="152" 
-            allowFullScreen="" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy"
-          ></iframe>
-        </div>
-      )}
+      <div style={{
+        width: 'calc(100vw - 40px)',
+        maxWidth: '300px',
+        borderRadius: '12px',
+        boxShadow: isOpen ? '0 10px 30px rgba(0,0,0,0.5)' : 'none',
+        pointerEvents: isOpen ? 'auto' : 'none',
+        opacity: isOpen ? 1 : 0,
+        position: isOpen ? 'relative' : 'absolute',
+        transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'all 0.3s ease-in-out',
+        zIndex: isOpen ? 1 : -1
+      }}>
+        <iframe 
+          style={{ border: 0, borderRadius: '12px' }} 
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator&theme=0" 
+          width="100%" 
+          height="80" 
+          allowFullScreen="" 
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+          loading="lazy"
+        ></iframe>
+      </div>
 
       {/* Tombol Toggle (Buka/Tutup) */}
       <button 
