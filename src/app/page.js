@@ -207,8 +207,8 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Download CV Button - Separated */}
-          <div className="delay-300" style={{ display: 'flex', justifyContent: 'center' }}>
+          {/* Download CV & Portofolio Buttons */}
+          <div className="delay-300" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <a
               href="/cv.pdf"
               download="CV_Krisnavaro.pdf"
@@ -222,6 +222,21 @@ export default function Home() {
               }}
             >
               📄 Download CV
+            </a>
+            
+            <a
+              href="/portofolio.pdf"
+              download="Portofolio_Krisnavaro.pdf"
+              className="btn btn-glass"
+              style={{ 
+                borderColor: "rgba(255, 255, 255, 0.2)", 
+                color: "var(--foreground)",
+                padding: '0.6rem 1.5rem',
+                fontSize: '0.95rem',
+                borderRadius: '50px'
+              }}
+            >
+              📁 Download Portofolio (PDF)
             </a>
           </div>
         </div>
