@@ -26,16 +26,17 @@ export default function SpotifyPlayer() {
         position: isOpen ? 'relative' : 'absolute',
         transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
         transition: 'all 0.3s ease-in-out',
-        zIndex: isOpen ? 1 : -1
+        zIndex: isOpen ? 1 : -1,
+        overflow: 'hidden'
       }}>
         <iframe 
-          style={{ border: 0, borderRadius: '12px' }} 
-          src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?utm_source=generator&theme=0" 
+          style={{ border: 0, borderRadius: '12px', display: 'block' }} 
+          src="https://www.youtube.com/embed/7d6rzXVlbjg?autoplay=0&rel=0" 
+          title="YouTube Music Player"
           width="100%" 
-          height="80" 
-          allowFullScreen="" 
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-          loading="lazy"
+          height="169" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowFullScreen
         ></iframe>
       </div>
 
