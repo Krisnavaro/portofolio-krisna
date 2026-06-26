@@ -207,23 +207,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Download CV Button */}
-          <div className="delay-300" style={{ display: 'flex', justifyContent: 'center' }}>
-            <a
-              href="/cv.pdf"
-              download="CV_Krisnavaro.pdf"
-              className="btn btn-glass"
-              style={{ 
-                borderColor: "rgba(255, 255, 255, 0.2)", 
-                color: "var(--foreground)",
-                padding: '0.6rem 1.5rem',
-                fontSize: '0.95rem',
-                borderRadius: '50px'
-              }}
-            >
-              📄 Download CV
-            </a>
-          </div>
+          {/* Download CV Button Removed */}
         </div>
       </section>
 
