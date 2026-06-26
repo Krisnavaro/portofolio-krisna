@@ -86,7 +86,6 @@ export default function Home() {
                 setClickCount(nc);
                 if (nc >= 5) setShowMatrix(true);
               }}
-              title="Click me 5 times!"
               style={{
                 width: '180px',
                 height: '180px',
