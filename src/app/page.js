@@ -227,7 +227,7 @@ export default function Home() {
               <div>
                 <h3 className="text-gradient" style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 700 }}>Keahlian Inti</h3>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
-                  {['Java', 'Python', 'PHP', 'Tailwind CSS', 'MySQL', 'Figma', 'UI/UX Design', 'Generative AI'].map(skill => (
+                  {['Java', 'Python', 'PHP', 'Tailwind CSS', 'MySQL', 'Figma', 'Adobe Illustrator', 'Canva', 'UI/UX Design', 'Generative AI'].map(skill => (
                     <span key={skill} style={{ 
                       padding: '0.4rem 1rem', 
                       borderRadius: '50px', 
