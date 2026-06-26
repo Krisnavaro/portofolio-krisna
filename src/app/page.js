@@ -171,8 +171,8 @@ export default function Home() {
       </section>
 
       {/* CV Section - Modern Timeline */}
-      <section id="resume" className="container animate-fade-in delay-200" style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem 2rem 4rem 2rem' }}>
-         <div className="mobile-stack" style={{ display: 'flex', flexWrap: 'wrap', gap: '4rem' }}>
+      <section id="resume" className="container animate-fade-in delay-200" style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem 1.5rem 4rem 1.5rem' }}>
+         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem' }}>
             
             {/* Left Column - Profile & Skills Summary */}
             <div style={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
@@ -203,13 +203,13 @@ export default function Home() {
             </div>
 
             {/* Right Column - Vertical Timeline */}
-            <div style={{ flex: '2 1 400px', paddingLeft: '2rem', borderLeft: '2px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+            <div style={{ flex: '1 1 350px', paddingLeft: '1.8rem', borderLeft: '2px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', gap: '2.5rem', marginLeft: '0.5rem' }}>
               
               <h3 className="text-gradient" style={{ fontSize: '1.8rem', marginBottom: '0.5rem', fontWeight: 700, marginLeft: '-1rem' }}>Pengalaman & Pendidikan</h3>
               
               {/* Timeline Item 1 */}
               <div style={{ position: 'relative' }}>
-                <div style={{ position: 'absolute', left: '-2.4rem', top: '0.2rem', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--primary)', boxShadow: '0 0 15px var(--primary-glow)' }}></div>
+                <div style={{ position: 'absolute', left: '-2.25rem', top: '0.2rem', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--primary)', boxShadow: '0 0 15px var(--primary-glow)' }}></div>
                 <h4 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--foreground)', marginBottom: '0.3rem' }}>Sistem Presensi Web "Kopi BOR"</h4>
                 <p style={{ color: 'var(--accent)', fontSize: '0.95rem', marginBottom: '0.8rem', fontWeight: 500 }}>Pengembang Independen • Juli 2025</p>
                 <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, fontSize: '0.95rem' }}>
@@ -219,7 +219,7 @@ export default function Home() {
 
               {/* Timeline Item 2 */}
               <div style={{ position: 'relative' }}>
-                <div style={{ position: 'absolute', left: '-2.4rem', top: '0.2rem', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--primary)', boxShadow: '0 0 15px var(--primary-glow)' }}></div>
+                <div style={{ position: 'absolute', left: '-2.25rem', top: '0.2rem', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--primary)', boxShadow: '0 0 15px var(--primary-glow)' }}></div>
                 <h4 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--foreground)', marginBottom: '0.3rem' }}>Dashboard "Djaya Aspalt"</h4>
                 <p style={{ color: 'var(--accent)', fontSize: '0.95rem', marginBottom: '0.8rem', fontWeight: 500 }}>Proyek Portofolio UI/UX • Juni 2025</p>
                 <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, fontSize: '0.95rem' }}>
@@ -229,7 +229,7 @@ export default function Home() {
 
               {/* Timeline Item 3 */}
               <div style={{ position: 'relative' }}>
-                <div style={{ position: 'absolute', left: '-2.4rem', top: '0.2rem', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--secondary)' }}></div>
+                <div style={{ position: 'absolute', left: '-2.25rem', top: '0.2rem', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--secondary)' }}></div>
                 <h4 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--foreground)', marginBottom: '0.3rem' }}>S1 Teknik Informatika</h4>
                 <p style={{ color: 'var(--accent)', fontSize: '0.95rem', marginBottom: '0.8rem', fontWeight: 500 }}>Universitas Bina Sarana Informatika • Semester 6</p>
                 <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, fontSize: '0.95rem' }}>
@@ -239,7 +239,7 @@ export default function Home() {
 
               {/* Timeline Item 4 */}
               <div style={{ position: 'relative' }}>
-                <div style={{ position: 'absolute', left: '-2.4rem', top: '0.2rem', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--secondary)', opacity: 0.5 }}></div>
+                <div style={{ position: 'absolute', left: '-2.25rem', top: '0.2rem', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--secondary)', opacity: 0.5 }}></div>
                 <h4 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--foreground)', marginBottom: '0.3rem' }}>Teknik Komputer dan Jaringan</h4>
                 <p style={{ color: 'var(--accent)', fontSize: '0.95rem', marginBottom: '0.8rem', fontWeight: 500 }}>SMK 3 Perguruan Cikini • Lulus 2021</p>
                 <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, fontSize: '0.95rem' }}>

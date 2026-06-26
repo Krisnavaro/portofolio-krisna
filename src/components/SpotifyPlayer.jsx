@@ -7,7 +7,7 @@ export default function SpotifyPlayer() {
   return (
     <div style={{
       position: 'fixed',
-      bottom: '80px',
+      bottom: '30px',
       right: '20px',
       zIndex: 9999,
       display: 'flex',
