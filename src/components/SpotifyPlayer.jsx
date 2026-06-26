@@ -53,7 +53,7 @@ export default function SpotifyPlayer() {
           width: '40px',
           height: '40px',
           padding: '0',
-          background: isPlaying ? 'var(--primary)' : 'rgba(255, 255, 255, 0.05)',
+          background: 'rgba(255, 255, 255, 0.05)',
           backdropFilter: 'blur(10px)',
           border: '1px solid rgba(255, 255, 255, 0.1)',
           color: '#fff',
@@ -62,12 +62,14 @@ export default function SpotifyPlayer() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          boxShadow: isPlaying ? '0 0 15px var(--primary-glow)' : '0 4px 15px rgba(0,0,0,0.3)',
-          transition: 'all 0.3s ease',
-          pointerEvents: 'auto'
+          boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+          transition: 'all 1.5s ease-in-out',
+          pointerEvents: 'auto',
+          opacity: isPlaying ? 0.15 : 1,
+          transform: isPlaying ? 'scale(0.8)' : 'scale(1)'
         }}
       >
-        <span style={{ fontSize: '1rem', transform: isPlaying ? 'scale(1.1)' : 'scale(1)' }}>
+        <span style={{ fontSize: '1rem', transition: 'all 0.5s' }}>
           {isPlaying ? '⏸' : '🎵'}
         </span>
       </button>
