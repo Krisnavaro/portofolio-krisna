@@ -1,20 +1,33 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function SpotifyPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const iframeRef = useRef(null);
+  const audioRef = useRef(null);
 
   const togglePlay = () => {
-    if (iframeRef.current && iframeRef.current.contentWindow) {
-      const command = isPlaying ? 'pauseVideo' : 'playVideo';
-      iframeRef.current.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: command, args: [] }),
-        '*'
-      );
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(error => {
+          console.error("Audio playback failed:", error);
+          alert("Pastikan file music.mp3 sudah ada di folder public!");
+        });
+      }
       setIsPlaying(!isPlaying);
     }
   };
+
+  // Sinkronisasi state jika lagu selesai
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      const handleEnded = () => setIsPlaying(false);
+      audio.addEventListener('ended', handleEnded);
+      return () => audio.removeEventListener('ended', handleEnded);
+    }
+  }, []);
 
   return (
     <div style={{
@@ -24,17 +37,13 @@ export default function SpotifyPlayer() {
       zIndex: 9999,
       pointerEvents: 'none'
     }}>
-      {/* Hidden YouTube Iframe for Audio Only */}
-      <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }}>
-        <iframe 
-          ref={iframeRef}
-          src="https://www.youtube.com/embed/7d6rzXVlbjg?enablejsapi=1&autoplay=0&rel=0&controls=0" 
-          title="YouTube Music Player"
-          width="10" 
-          height="10" 
-          allow="autoplay"
-        ></iframe>
-      </div>
+      {/* Native Audio Player (Hidden) */}
+      <audio 
+        ref={audioRef}
+        src="/music.mp3" 
+        preload="auto"
+        loop
+      />
 
       {/* Play/Pause Button */}
       <button 
