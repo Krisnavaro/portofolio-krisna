@@ -1,8 +1,35 @@
+"use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import MatrixRain from "../components/MatrixRain";
 
 export default function Home() {
+  const [clickCount, setClickCount] = useState(0);
+  const [showMatrix, setShowMatrix] = useState(false);
+  const [typedText, setTypedText] = useState("");
+  const fullText = "Kandidat Magang Creative Technologist";
+
+  useEffect(() => {
+    let currentText = "";
+    let currentIndex = 0;
+    
+    const typeInterval = setInterval(() => {
+      if (currentIndex < fullText.length) {
+        currentText += fullText[currentIndex];
+        setTypedText(currentText);
+        currentIndex++;
+      } else {
+        clearInterval(typeInterval);
+      }
+    }, 50);
+    
+    return () => clearInterval(typeInterval);
+  }, []);
   return (
     <main style={{ position: "relative", zIndex: 1, paddingBottom: "4rem" }}>
+      {/* Matrix Easter Egg */}
+      {showMatrix && <MatrixRain />}
+
       {/* Blended Background: Coding (Left) & Design (Right) Seamlessly */}
       <div style={{
         position: 'fixed',
@@ -54,6 +81,12 @@ export default function Home() {
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
             <div
               className="profile-img-wrapper"
+              onClick={() => {
+                const nc = clickCount + 1;
+                setClickCount(nc);
+                if (nc >= 5) setShowMatrix(true);
+              }}
+              title="Click me 5 times!"
               style={{
                 width: '180px',
                 height: '180px',
@@ -80,13 +113,21 @@ export default function Home() {
               letterSpacing: "3px",
               textTransform: "uppercase",
               marginBottom: "1rem",
-              fontSize: "0.9rem"
+              fontSize: "0.9rem",
+              minHeight: "1.5rem"
             }}
           >
-            Kandidat Magang Creative Technologist
+            {typedText}
+            <span style={{ 
+              animation: 'blink 1s step-end infinite',
+              opacity: typedText.length === fullText.length ? 0 : 1,
+              marginLeft: '2px',
+              color: 'var(--primary)'
+            }}>|</span>
           </p>
 
           <h1
+            className="glitch-text-effect"
             style={{
               fontSize: "clamp(3rem, 8vw, 5.5rem)",
               margin: "0 0 1.5rem 0",
