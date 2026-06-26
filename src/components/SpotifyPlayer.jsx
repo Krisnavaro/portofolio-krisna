@@ -42,26 +42,26 @@ export default function SpotifyPlayer() {
       {/* Tombol Toggle (Buka/Tutup) */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
+        title={isOpen ? 'Tutup Music Player' : 'Buka Music Player'}
         style={{
+          width: '50px',
+          height: '50px',
+          padding: '0',
           background: 'rgba(255, 255, 255, 0.05)',
           backdropFilter: 'blur(10px)',
           border: '1px solid rgba(255, 255, 255, 0.1)',
           color: 'var(--foreground)',
-          padding: '10px 20px',
-          borderRadius: '50px',
+          borderRadius: '50%',
           cursor: 'pointer',
           display: 'flex',
+          justifyContent: 'center',
           alignItems: 'center',
-          gap: '8px',
-          fontWeight: '500',
           boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
           transition: 'all 0.3s ease',
-          fontSize: '0.9rem',
           pointerEvents: 'auto' // Tombol harus bisa diklik
         }}
       >
-        <span style={{ fontSize: '1.2rem' }}>🎵</span>
-        {isOpen ? 'Tutup Music Player' : 'Buka Music Player'}
+        <span style={{ fontSize: '1.3rem' }}>🎵</span>
       </button>
     </div>
   );
