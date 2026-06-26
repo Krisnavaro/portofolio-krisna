@@ -83,8 +83,15 @@ export default function Home() {
               className="profile-img-wrapper"
               onClick={() => {
                 const nc = clickCount + 1;
-                setClickCount(nc);
-                if (nc >= 5) setShowMatrix(true);
+                if (nc === 5) {
+                  setShowMatrix(true);
+                  setClickCount(nc);
+                } else if (nc > 5) {
+                  setShowMatrix(false);
+                  setClickCount(0); // Reset hitungan
+                } else {
+                  setClickCount(nc);
+                }
               }}
               style={{
                 width: '180px',
