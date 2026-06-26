@@ -44,8 +44,8 @@ export default function SpotifyPlayer() {
         onClick={() => setIsOpen(!isOpen)}
         title={isOpen ? 'Tutup Music Player' : 'Buka Music Player'}
         style={{
-          width: '50px',
-          height: '50px',
+          width: '40px',
+          height: '40px',
           padding: '0',
           background: 'rgba(255, 255, 255, 0.05)',
           backdropFilter: 'blur(10px)',
@@ -61,7 +61,7 @@ export default function SpotifyPlayer() {
           pointerEvents: 'auto' // Tombol harus bisa diklik
         }}
       >
-        <span style={{ fontSize: '1.3rem' }}>🎵</span>
+        <span style={{ fontSize: '1rem' }}>🎵</span>
       </button>
     </div>
   );
